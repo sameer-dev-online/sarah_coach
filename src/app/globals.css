@@ -2,25 +2,129 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2d3748;
+  --primary: #4299e1;
+  --primary-dark: #3182ce;
+  --secondary: #38b2ac;
+  --accent: #ed8936;
+  --muted: #f7fafc;
+  --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation backdrop blur support */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Ensure sections have proper spacing for navigation */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Form improvements */
+.form-input {
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Contact page specific styles */
+.contact-hero-bg {
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .contact-hero-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Success message animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
 }
